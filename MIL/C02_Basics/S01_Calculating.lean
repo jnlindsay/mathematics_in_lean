@@ -28,7 +28,9 @@ example (a b c : ℝ) : a * (b * c) = b * (c * a) := by
   rw [mul_assoc]
 
 example (a b c : ℝ) : a * (b * c) = b * (a * c) := by
-  sorry
+  rw [<- mul_assoc]
+  rw [mul_comm a b]
+  rw [mul_assoc]
 
 -- Using facts from the local context.
 example (a b c d e f : ℝ) (h : a * b = c * d) (h' : e = f) : a * (b * e) = c * (d * f) := by
