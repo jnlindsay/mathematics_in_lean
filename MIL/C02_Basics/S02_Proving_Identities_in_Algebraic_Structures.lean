@@ -56,7 +56,9 @@ theorem add_neg_cancel_right (a b : R) : a + b + -b = a := by
   rw [add_assoc, add_neg_cancel, add_zero]
 
 theorem add_left_cancel {a b c : R} (h : a + b = a + c) : b = c := by
-  sorry
+  rw [← neg_add_cancel_left a b]
+  rw [h]
+  rw [neg_add_cancel_left a c]
 
 theorem add_right_cancel {a b c : R} (h : a + b = c + b) : a = c := by
   sorry
