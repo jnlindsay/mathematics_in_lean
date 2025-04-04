@@ -71,7 +71,9 @@ theorem mul_zero (a : R) : a * 0 = 0 := by
   rw [add_left_cancel h]
 
 theorem zero_mul (a : R) : 0 * a = 0 := by
-  sorry
+  have h : 0 * a + 0 * a = 0 * a + 0 := by
+    rw [← add_mul, add_zero, add_zero]
+  rw [add_left_cancel h]
 
 theorem neg_eq_of_add_eq_zero {a b : R} (h : a + b = 0) : -a = b := by
   sorry
