@@ -79,7 +79,8 @@ theorem neg_eq_of_add_eq_zero {a b : R} (h : a + b = 0) : -a = b := by
   rw [← neg_add_cancel_left a b, h, add_zero]
 
 theorem eq_neg_of_add_eq_zero {a b : R} (h : a + b = 0) : a = -b := by
-  sorry
+  rw [add_comm] at h
+  rw [← neg_add_cancel_left b a, h, add_zero]
 
 theorem neg_zero : (-0 : R) = 0 := by
   apply neg_eq_of_add_eq_zero
