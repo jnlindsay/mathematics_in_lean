@@ -151,7 +151,16 @@ theorem mul_one (a : G) : a * 1 = a := by
   rw [← inv_mul_cancel a, ← mul_assoc, mul_inv_cancel, one_mul]
 
 theorem mul_inv_rev (a b : G) : (a * b)⁻¹ = b⁻¹ * a⁻¹ := by
-  sorry
+  /-
+    (a * b)⁻¹ = (a * b)⁻¹ * (a * b * b⁻¹ * a⁻¹)
+              = (a * b)⁻¹ * (a * b) * b⁻¹ * a⁻¹
+              = b⁻¹ * a⁻¹
+  -/
+  have h : (a * b)⁻¹ = (a * b)⁻¹ * (a * b * b⁻¹ * a⁻¹) := by
+    nth_rewrite 1 [← mul_one (a * b)⁻¹, ← mul_inv_cancel a]
+    nth_rewrite 2 [← mul_one a]
+    rw [← mul_inv_cancel b, ← mul_assoc a b b⁻¹]
+  rw [h, ← mul_assoc, ← mul_assoc, inv_mul_cancel, one_mul]
 
 end MyGroup
 
