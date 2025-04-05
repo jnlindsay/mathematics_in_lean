@@ -84,6 +84,7 @@ theorem eq_neg_of_add_eq_zero {a b : R} (h : a + b = 0) : a = -b := by
 
 theorem neg_zero : (-0 : R) = 0 := by
   apply neg_eq_of_add_eq_zero
+  -- we now need to prove the hypothesis `h : a + b = 0`
   rw [add_zero]
 
 theorem neg_neg (a : R) : - -a = a := by
