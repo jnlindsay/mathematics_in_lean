@@ -103,9 +103,13 @@ example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by
 example : (0 : ℝ) < 1 := by norm_num
 
 example (h : a ≤ b) : log (1 + exp a) ≤ log (1 + exp b) := by
-  have h₀ : 0 < 1 + exp a := by sorry
+  have h₀ : 0 < 1 + exp a := by
+    apply add_pos
+    . norm_num
+    . apply exp_pos a
   apply log_le_log h₀
-  sorry
+  apply add_le_add_left
+  apply exp_le_exp.mpr h
 
 example : 0 ≤ a ^ 2 := by
   -- apply?
