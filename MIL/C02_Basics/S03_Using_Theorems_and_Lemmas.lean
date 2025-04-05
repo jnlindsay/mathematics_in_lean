@@ -92,7 +92,13 @@ example (h₀ : a ≤ b) (h₁ : c < d) : a + exp c + e < b + exp d + e := by
     apply exp_lt_exp.mpr h₁
   apply le_refl
 
-example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by sorry
+example (h₀ : d ≤ e) : c + exp (a + d) ≤ c + exp (a + e) := by
+  have h₁ : a + d ≤ a + e := by
+    apply add_le_add_left
+    apply h₀
+  have h₂ : exp (a + d) ≤ exp (a + e) := by
+    apply exp_le_exp.mpr h₁
+  exact add_le_add_left h₂ c
 
 example : (0 : ℝ) < 1 := by norm_num
 
