@@ -82,6 +82,10 @@ example (h : a ≤ b) : exp a ≤ exp b := by
   rw [exp_le_exp]
   exact h
 
+-- jnlindsay: We could also do this:
+example (h : a ≤ b) : exp a ≤ exp b := by
+  exact exp_le_exp.mpr h
+
 example (h₀ : a ≤ b) (h₁ : c < d) : a + exp c + e < b + exp d + e := by
   apply add_lt_add_of_lt_of_le
   · apply add_lt_add_of_le_of_lt h₀
