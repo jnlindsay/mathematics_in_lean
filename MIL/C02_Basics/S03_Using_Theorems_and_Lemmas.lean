@@ -139,6 +139,17 @@ example : 2*a*b ≤ a^2 + b^2 := by
   linarith
 
 example : |a*b| ≤ (a^2 + b^2)/2 := by
-  sorry
+
+  have h₀ : 0 ≤ (a + b)^2 := by
+    apply pow_two_nonneg
+  have h₁ : 0 ≤ (a - b)^2 := by
+    apply pow_two_nonneg
+
+  have h₂ : a * b ≤ (a^2 + b^2) / 2 := by
+    linarith
+  have h₃ : -(a * b) ≤ (a^2 + b^2) / 2 := by
+    linarith
+
+  exact abs_le'.mpr ⟨h₂, h₃⟩
 
 #check abs_le'.mpr
