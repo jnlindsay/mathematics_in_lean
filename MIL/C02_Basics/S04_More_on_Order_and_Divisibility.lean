@@ -15,11 +15,11 @@ example : min a b = min b a := by
   · show min a b ≤ min b a
     apply le_min
     · apply min_le_right
-    apply min_le_left
+    . apply min_le_left
   · show min b a ≤ min a b
     apply le_min
     · apply min_le_right
-    apply min_le_left
+    . apply min_le_left
 
 example : min a b = min b a := by
   have h : ∀ x y : ℝ, min x y ≤ min y x := by
@@ -80,5 +80,3 @@ variable (m n : ℕ)
 example : Nat.gcd m n = Nat.gcd n m := by
   sorry
 end
-
-
