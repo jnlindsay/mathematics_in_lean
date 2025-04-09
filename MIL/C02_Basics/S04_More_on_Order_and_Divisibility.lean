@@ -52,7 +52,12 @@ example : min (min a b) c = min a (min b c) := by
   sorry -- not useful
 
 theorem aux : min a b + c ≤ min (a + c) (b + c) := by
-  sorry
+  apply le_min
+  . apply add_le_add_right
+    apply min_le_left
+  . apply add_le_add_right
+    apply min_le_right
+
 example : min a b + c = min (a + c) (b + c) := by
   sorry
 #check (abs_add : ∀ a b : ℝ, |a + b| ≤ |a| + |b|)
