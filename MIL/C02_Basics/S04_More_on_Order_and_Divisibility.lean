@@ -59,18 +59,14 @@ theorem aux : min a b + c ≤ min (a + c) (b + c) := by
     apply min_le_right
 
 example : min a b + c = min (a + c) (b + c) := by
-  have h₀ : min (a + c) (b + c) ≤ a + c := by
-    apply min_le_left
-  have h₁ : min (a + c) (b + c) ≤ b + c := by
-    apply min_le_right
-  have h₂ : min (a + c) (b + c) - c ≤ min a b := by
+  have h : min (a + c) (b + c) - c ≤ min a b := by
     apply le_min
-    . linarith [h₀]
-    . linarith [h₁]
+    . linarith [min_le_left  (a + c) (b + c)]
+    . linarith [min_le_right (a + c) (b + c)]
 
   apply le_antisymm
   . apply aux
-  . linarith [h₂]
+  . linarith [h]
 
 #check (abs_add : ∀ a b : ℝ, |a + b| ≤ |a| + |b|)
 
