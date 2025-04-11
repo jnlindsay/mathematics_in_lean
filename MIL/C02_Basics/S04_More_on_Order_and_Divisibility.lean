@@ -71,7 +71,13 @@ example : min a b + c = min (a + c) (b + c) := by
 #check (abs_add : ∀ a b : ℝ, |a + b| ≤ |a| + |b|)
 
 example : |a| - |b| ≤ |a - b| :=
-  sorry
+  calc
+    |a| - |b| = |a - b + b| - |b| := by
+      rw [sub_add_cancel a b]
+    _ ≤ |a - b| + |b| - |b| := by
+      linarith [abs_add (a - b) b]
+    _ = |a - b| := by
+      rw [add_sub_cancel_right]
 end
 
 section
