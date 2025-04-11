@@ -101,8 +101,14 @@ example : x ∣ x ^ 2 := by
   apply dvd_mul_left
 
 example (h : x ∣ w) : x ∣ y * (x * z) + x ^ 2 + w ^ 2 := by
-  sorry
-end
+  have h₀ : w ∣ w^2 := by
+    apply dvd_mul_left w
+  apply dvd_add
+  . apply dvd_add
+    . apply dvd_mul_of_dvd_right
+      apply dvd_mul_right
+    . apply dvd_mul_left
+  . exact dvd_trans h h₀
 
 section
 variable (m n : ℕ)
