@@ -118,6 +118,22 @@ variable (m n : ℕ)
 #check (Nat.lcm_zero_right n : Nat.lcm n 0 = 0)
 #check (Nat.lcm_zero_left n : Nat.lcm 0 n = 0)
 
+#check (Nat.gcd_dvd_right m n : Nat.gcd m n ∣ n)
+#check (Nat.gcd_dvd_left m n : Nat.gcd m n ∣ m)
+
 example : Nat.gcd m n = Nat.gcd n m := by
-  sorry
+  /-
+    1. Nat.gcd m n ∣ Nat.gcd n m
+      i.  Nat.gcd m n ∣ n
+      ii. Nat.gcd m n ∣ m
+    2. Nat.gcd n m ∣ Nat.gcd m n
+      i.  Nat.gcd n m ∣ m
+      ii. Nat.gcd n m ∣ n
+  -/
+  apply Nat.dvd_antisymm
+  repeat
+    apply Nat.dvd_gcd
+    . apply Nat.gcd_dvd_right
+    . apply Nat.gcd_dvd_left
+
 end
