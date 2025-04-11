@@ -78,6 +78,13 @@ example : |a| - |b| ≤ |a - b| :=
       linarith [abs_add (a - b) b]
     _ = |a - b| := by
       rw [add_sub_cancel_right]
+
+-- better:
+example : |a| - |b| ≤ |a - b| := by
+  have h := abs_add (a - b) b
+  rw [sub_add_cancel] at h
+  linarith [h]
+
 end
 
 section
