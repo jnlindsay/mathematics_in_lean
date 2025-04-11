@@ -43,19 +43,19 @@ example : x ⊓ y = y ⊓ x := by
     . apply inf_le_left
 
 example : x ⊓ y ⊓ z = x ⊓ (y ⊓ z) := by
-  sorry
+  sorry -- skipped
 
 example : x ⊔ y = y ⊔ x := by
-  sorry
+  sorry -- skipped
 
 example : x ⊔ y ⊔ z = x ⊔ (y ⊔ z) := by
-  sorry
+  sorry -- skipped
 
 theorem absorb1 : x ⊓ (x ⊔ y) = x := by
-  sorry
+  sorry -- skipped
 
 theorem absorb2 : x ⊔ x ⊓ y = x := by
-  sorry
+  sorry -- skipped
 
 end
 
