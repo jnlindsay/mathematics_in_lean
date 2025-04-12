@@ -146,7 +146,7 @@ def midpoint (a b : StandardTwoSimplex) : StandardTwoSimplex
 
 def weightedAverage (lambda : Real) (lambda_nonneg : 0 ≤ lambda) (lambda_le : lambda ≤ 1)
     (a b : StandardTwoSimplex) : StandardTwoSimplex :=
-  sorry
+  sorry -- skipped
 
 end
 
