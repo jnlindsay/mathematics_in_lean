@@ -90,7 +90,9 @@ def smul (r : ℝ) (a : Point) : Point :=
 
 theorem smul_distrib (r : ℝ) (a b : Point) :
     (smul r a).add (smul r b) = smul r (a.add b) := by
-  sorry
+  rw [smul, smul, add, smul, add]
+  ext <;> dsimp
+  repeat' rw [← left_distrib]
 
 end Point
 
