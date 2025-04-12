@@ -80,10 +80,17 @@ theorem addAlt_comm (a b : Point) : addAlt a b = addAlt b a := by
   ext <;> dsimp
   repeat' apply add_comm
 
+-- my attempt:
+/-
 protected theorem add_assoc (a b c : Point) : (a.add b).add c = a.add (b.add c) := by
   rw [add, add]
   ext <;> dsimp
   repeat apply add_assoc
+-/
+
+-- better solution:
+protected theorem add_assoc (a b c : Point) : (a.add b).add c = a.add (b.add c) := by
+  simp [add, add_assoc]
 
 def smul (r : ℝ) (a : Point) : Point :=
   ⟨r * a.x, r * a.y, r * a.z⟩
