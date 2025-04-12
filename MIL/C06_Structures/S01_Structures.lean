@@ -88,18 +88,26 @@ protected theorem add_assoc (a b c : Point) : (a.add b).add c = a.add (b.add c) 
   repeat apply add_assoc
 -/
 
--- better solution:
+-- simpler solution:
 protected theorem add_assoc (a b c : Point) : (a.add b).add c = a.add (b.add c) := by
   simp [add, add_assoc]
 
 def smul (r : ℝ) (a : Point) : Point :=
   ⟨r * a.x, r * a.y, r * a.z⟩
 
+-- my attempt:
+/-
 theorem smul_distrib (r : ℝ) (a b : Point) :
     (smul r a).add (smul r b) = smul r (a.add b) := by
   rw [smul, smul, add, smul, add]
   ext <;> dsimp
   repeat' rw [← left_distrib]
+-/
+
+-- simpler solution:
+theorem smul_distrib (r : ℝ) (a b : Point) :
+    (smul r a).add (smul r b) = smul r (a.add b) := by
+  simp [add, smul, left_distrib]
 
 end Point
 
