@@ -81,7 +81,9 @@ theorem addAlt_comm (a b : Point) : addAlt a b = addAlt b a := by
   repeat' apply add_comm
 
 protected theorem add_assoc (a b c : Point) : (a.add b).add c = a.add (b.add c) := by
-  sorry
+  rw [add, add]
+  ext <;> dsimp
+  repeat apply add_assoc
 
 def smul (r : ℝ) (a : Point) : Point :=
   sorry
@@ -206,4 +208,3 @@ variable (s : StdSimplex)
 #check s.2
 
 end
-
